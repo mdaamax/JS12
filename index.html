@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const users = [
+            {username: "admin", password: "123"},
+            {username: "max", password: "123"}
+        ]
+    ;
+
+    function checkCredentials(username, password) {
+        const foundUser = users.find(user => user.username === username && user.password === password);
+        if (foundUser) {
+            return true;
+        } else {
+            throw new Error("Неверные учетные данные");
+        }
+    }
+
+    try {
+        const enteredUsername = prompt("Введите логин:");
+        const enteredPassword = prompt("Введите пароль:");
+
+        checkCredentials(enteredUsername, enteredPassword);
+        console.log("Успешная авторизация.");
+    } catch (error) {
+        console.error(error.message);
+    }
+</script>
+</body>
+</html>
